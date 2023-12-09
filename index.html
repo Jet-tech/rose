@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asika's Birthday Celebration</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      font-family: 'Shadows Into Light', cursive;
+    }
+    .button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .custom-modal-container {
+      background-color: #ffffff;
+      color: #333;
+      position: relative;
+    }
+    .custom-modal-container p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #555;
+      margin: 10px 0;
+    }
+    .overlay-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #555;
+      z-index: 1000;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<button id="clickHereButton" class="button" onclick="showBirthdayModal()">Click Here</button>
+
+<div id="overlayText" class="overlay-text">Are you ready?</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+  function showBirthdayModal() {
+    // Hide the "Click Here" button
+    const clickHereButton = document.getElementById('clickHereButton');
+    clickHereButton.style.display = 'none';
+
+    Swal.fire({
+      title: 'Happy Birthday Asika!',
+      html: '<p>Wishing you an amazing day filled with joy and laughter!</p>',
+      showCloseButton: false,
+      showCancelButton: false,
+      focusConfirm: false,
+      confirmButtonText: 'Aduthu',
+      customClass: {
+        container: 'custom-modal-container',
+        popup: 'custom-modal-popup',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showAdditionalWishesModal();
+      }
+    });
+  }
+
+  function showAdditionalWishesModal() {
+    Swal.fire({
+      title: 'Asika❤️',
+      html: '<p>May this year bring you even more success and happiness!</p>' +
+            '<p>May all your dreams and wishes come true!</p>' +
+            '<p>Wishing you health, wealth, and lots of love on your special day!</p>',
+      showCloseButton: false,
+      showCancelButton: false,
+      focusConfirm: false,
+      confirmButtonText: '👉🏼',
+      customClass: {
+        container: 'custom-modal-container',
+        popup: 'custom-modal-popup',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showNextBirthdayMessage();
+      }
+    });
+  }
+
+  function showNextBirthdayMessage() {
+    Swal.fire({
+      title: 'To the Brave Girl...',
+      html: '<p>Here\'s another special message just for you!</p>' +
+            '<p>Always choose the path you choosing for yourself. Be you!</p>' +
+            '<p>May your journey be filled with love and joy!</p>',
+      showCloseButton: false,
+      showCancelButton: false,
+      focusConfirm: false,
+      confirmButtonText: 'Special Cake🎂🍰',
+      customClass: {
+        container: 'custom-modal-container',
+        popup: 'custom-modal-popup',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showOverlayText();
+      }
+    });
+  }
+
+  function showOverlayText() {
+    const overlayText = document.getElementById('overlayText');
+    overlayText.style.display = 'block';
+
+    setTimeout(() => {
+      overlayText.style.opacity = 0;
+      setTimeout(() => {
+        overlayText.style.display = 'none';
+        showStartButton();
+      }, 500); // Adjust the time for the fade-out animation
+    }, 3000);
+  }
+
+function showStartButton() {
+  Swal.fire({
+    title: 'Special Cake for The Best Brave Girl!',
+    html: '<p>Cake Cut Panlama😁!</p>',
+    showCloseButton: false,
+    showCancelButton: false,
+    focusConfirm: false,
+    confirmButtonText: 'Cake🎂',
+    customClass: {
+      container: 'custom-modal-container',
+      popup: 'custom-modal-popup',
+    },
+  }).then(() => {
+    // Redirect to index.html
+    window.location.href = 'cake.html';
+  });
+}
+
+</script>
+
+</body>
+</html>
